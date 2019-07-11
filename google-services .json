@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1015876513487",
+    "firebase_url": "https://forge-a-legend.firebaseio.com",
+    "project_id": "forge-a-legend",
+    "storage_bucket": "forge-a-legend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015876513487:android:b279ac50db9053e3",
+        "android_client_info": {
+          "package_name": "com.smithy.lappenlike.forgealegend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015876513487-nkhcdjqja9831rhttem7t5scr32m5qj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCag3u631MWuYbxBtBSSCB1tqL3Uv5airc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015876513487-nkhcdjqja9831rhttem7t5scr32m5qj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetName">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".50" />
+
+    <RadioGroup
+        android:id="@+id/faction_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_characterName">
+
+        <RadioButton
+            android:id="@+id/radio_fGoldenMonarchy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fac_golden_monarchy" />
+
+        <RadioButton
+            android:id="@+id/radio_fWorkersUnion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fac_workers_union" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/class_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/faction_group">
+
+        <RadioButton
+            android:id="@+id/radio_oEld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eld" />
+
+        <RadioButton
+            android:id="@+id/radio_oMerc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/merc" />
+
+        <RadioButton
+            android:id="@+id/radio_oFac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fac" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_yrace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/origin"
+        app:layout_constraintBottom_toTopOf="@+id/class_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_yfaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/faction"
+        app:layout_constraintBottom_toTopOf="@+id/faction_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/submit" />
+
+    <EditText
+        android:id="@+id/et_characterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="16"
+        android:text="@string/character_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_faction_desc" />
+
+    <ScrollView
+        android:id="@+id/sv_faction_desc"
+        android:layout_width="160dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/verticalLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_faction_header"
+                style="@style/SelectHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/sv_faction_desc"
+                app:layout_constraintEnd_toEndOf="@+id/sv_faction_desc"
+                app:layout_constraintStart_toStartOf="@+id/sv_faction_desc"
+                app:layout_constraintTop_toTopOf="@+id/sv_faction_desc" />
+
+            <TextView
+                android:id="@+id/tv_faction_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/sv_origin_desc"
+        android:layout_width="160dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/verticalLine"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_origin_header"
+                style="@style/SelectHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="264dp"
+                tools:layout_editor_absoluteY="77dp" />
+
+            <TextView
+                android:id="@+id/tv_origin_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_progressSet"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

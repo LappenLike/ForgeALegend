@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Forge A Legend!</string>
+
+    //Shown
+    <string name="login_btn_text">LOGIN</string>
+    <string name="signup_text">Sign Up!</string>
+    <string name="login_text">Login</string>
+    <string name="pw_text">Password</string>
+    <string name="email">E-Mail</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="character_name">Character Name</string>
+    <string name="submit">Submit</string>
+    <string name="profile">Profile</string>
+    <string name="menu">Menu</string>
+    <string name="logout">Logout</string>
+    <string name="forge">Forge</string>
+    <string name="forgeWeapons">Forge Weapons!</string>
+    <string name="burnBark">Bark to Burn</string>
+    <string name="burnWood">Wood to Burn</string>
+
+
+    //Materials
+    <string name="hardwood">Hardwood</string>
+    <string name="oak">Oak</string>
+    <string name="mahogany">Mahogany</string>
+    <string name="beech">Beech</string>
+
+    <string name="softwood">Softwood</string>
+    <string name="cedar">Cedar</string>
+    <string name="lark">Lark</string>
+    <string name="pine">Pine</string>
+
+    <string name="coal">Coal</string>
+
+    <string name="bark">Bark</string>
+    <string name="oakBark">OakBark</string>
+    <string name="mahoganyBark">MahoganyBark</string>
+    <string name="beechBark">BeechBark</string>
+    <string name="cedarBark">CedarBark</string>
+    <string name="larkBark">LarkBark</string>
+    <string name="pineBark">PineBark</string>
+
+    //Dialogs
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dial_lightFire">Are you sure you want to light the Fire?</string>
+
+    //Errors
+    <string name="registration_success">Registration successfull!</string>
+    <string name="email_in_use">Email in use!</string>
+    <string name="pw_required">Password required!</string>
+    <string name="pw_too_short">Password too short! [6―16 characters]</string>
+    <string name="email_required">E-Mail is required!</string>
+    <string name="email_invalid">Not a valid E-Mail.</string>
+    <string name="resource_missing">Required Resource is missing!</string>
+    <string name="fire_burning">Your fire is still burning!</string>
+    <string name="no_wood">You did not choose any wood!</string>
+    <string name="no_bark">You did not choose any bark!</string>
+
+    //Origin
+    <string name="origin">Your Origin</string>
+    <string name="elder_dwarfs">Elder Dwarfs</string>
+    <string name="eld">ElD</string>
+    <string name="eld_desc">While each and every one of the elder Dwarfs has spent his fair amount of time in the mines, they are just to old for that kind of work. \n
+        They spend most of their time close to the Anvil, trying to get better at what they did for the last several centuries... forging Weapons. \n
+        Even though they are trying, getting along proves difficult. \n
+        And you always dreamed about your own forge near the big city anyways, admit it!</string>
+    <string name="resigned_mercenaries">Resigned Mercenaries</string>
+    <string name="merc">MERC</string>
+    <string name="merc_desc">Life as a mercanary can be good! The wages are high, the risks are fairly low most of the time... but some of them have seen or felt things they would rather forget. \n
+        Compared to that, life as a blacksmith can be good too, right? The mercenary training might not have prepared you for that kind of work, but wouldn\'t your
+        customers appreciate having someone forge their weapons, who actually knows how to use them as well?</string>
+    <string name="the_faceless">The Faceless</string>
+    <string name="fac">FAC</string>
+    <string name="fac_desc">To avoid conflicts with the law, the names and faces of those working the mines must not never be known. \n
+        In recent times however, to recover some of their Dignity, most of the Workers have given themselves nicknames and started to socialize... a little. \n
+        The Faceless are made out of Humans, Dwarfs and other Folk, so while you might not like the others you can at least be yourself, huh? \n
+        Enough of this! Why do all that humiliating work, when as a Smith you can just put all of your material to good use yourself?</string>
+
+    //Factions
+    <string name="faction">Your Faction</string>
+
+    <string name="fac_golden_monarchy">Golden Monarchy</string>
+    <string name="gom">GoM</string>
+    <string name="gom_desc">The kingdom of a thousand years, ruling the continent not once defeated... not once challenged. \n
+        As a working class citizen your freedom might be limited, but your safety is assured. You can make a name for yourself, climb the ranks and acquire unlimited wealth. \n
+        There is no tax, there is no danger... as long as you do your job!</string>
+    <string name="fac_workers_union"> Workers Union</string>
+    <string name="wu">WU</string>
+    <string name="wu_desc">The Workers Union is the first independent Collective of it\'s kind. \n
+        It\'s made out of thousands of workers, some of the worst, some of the best, and doesn\'t stop anyone from joining... \n
+        As long as they are willing to work. \n
+        You are going to make a name for yourself? You are tired of having no will of your own? \n
+        Join us, and prove yourself!</string>
+
+    //Materials
+    <string name="copperCoin">CopperCoins</string>
+    <string name="cc">cc</string>
+
+    //Weapons
+
+    //System
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+</resources>

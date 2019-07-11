@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Forge.ForgeWeapon">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/weapHor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/weapVert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/weapVert75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/weapVert25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".25" />
+
+    <ImageView
+        android:id="@+id/iv_fire"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/fireout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/softwood"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_fire"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fire"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/bark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weapHor" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/hardwood"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_fire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_fire" />
+
+    <ImageView
+        android:id="@+id/iv_mahoganyBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_oakBark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_larkBark" />
+
+    <ImageView
+        android:id="@+id/iv_pineBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_larkBark"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/iv_larkBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/iv_beechBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_larkBark"
+        app:layout_constraintTop_toBottomOf="@+id/iv_larkBark" />
+
+    <ImageView
+        android:id="@+id/iv_cedarBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintEnd_toStartOf="@+id/iv_larkBark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/iv_oakBark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_larkBark" />
+
+    <ImageView
+        android:id="@+id/iv_beech"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_fire"
+        app:layout_constraintTop_toBottomOf="@+id/iv_mahogany" />
+
+    <ImageView
+        android:id="@+id/iv_mahogany"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_fire"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <ImageView
+        android:id="@+id/iv_pine"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fire"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_lark" />
+
+    <ImageView
+        android:id="@+id/iv_lark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fire"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/iv_cedar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/woodplaceholder"
+        app:layout_constraintBottom_toTopOf="@+id/iv_lark"
+        app:layout_constraintEnd_toStartOf="@+id/iv_fire"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/iv_oak"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_mahogany"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_fire"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        app:srcCompat="@drawable/woodplaceholder" />
+
+    <TextView
+        android:id="@+id/tv_burnWood"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/my_border"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/burnWood"
+        app:layout_constraintBottom_toTopOf="@+id/tv_burnBark"
+        app:layout_constraintEnd_toStartOf="@+id/weapVert75"
+        app:layout_constraintStart_toStartOf="@+id/weapVert25" />
+
+    <TextView
+        android:id="@+id/tv_burnBark"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/my_border"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/burnBark"
+        app:layout_constraintBottom_toTopOf="@+id/iv_fire"
+        app:layout_constraintEnd_toStartOf="@+id/weapVert75"
+        app:layout_constraintStart_toStartOf="@+id/weapVert25" />
+
+    <Button
+        android:id="@+id/btn_nextFragment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="=>"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/weapVert75"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_water"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/water"
+        app:layout_constraintBottom_toTopOf="@+id/tv_burnWood"
+        app:layout_constraintEnd_toStartOf="@+id/weapVert"
+        app:layout_constraintStart_toStartOf="@+id/weapVert25" />
+
+    <ImageView
+        android:id="@+id/iv_match"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/match"
+        app:layout_constraintBottom_toTopOf="@+id/tv_burnWood"
+        app:layout_constraintEnd_toStartOf="@+id/weapVert75"
+        app:layout_constraintStart_toStartOf="@+id/weapVert" />
+
+    <TextView
+        android:id="@+id/tv_fireLifetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:text="3"
+        app:layout_constraintEnd_toEndOf="@+id/iv_fire"
+        app:layout_constraintTop_toTopOf="@+id/iv_fire" />
+
+    <TextView
+        android:id="@+id/tv_fireEffects"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/my_border"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/counterCedar"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_cedar"
+        app:layout_constraintEnd_toEndOf="@+id/iv_cedar"
+        />
+
+    <TextView
+        android:id="@+id/counterLark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_lark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_lark" />
+
+    <TextView
+        android:id="@+id/counterOak"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_oak"
+        app:layout_constraintEnd_toEndOf="@+id/iv_oak" />
+
+    <TextView
+        android:id="@+id/counterPine"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_pine"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pine" />
+
+    <TextView
+        android:id="@+id/counterMahogany"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_mahogany"
+        app:layout_constraintEnd_toEndOf="@+id/iv_mahogany" />
+
+    <TextView
+        android:id="@+id/counterBeech"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_beech"
+        app:layout_constraintEnd_toEndOf="@+id/iv_beech" />
+
+    <TextView
+        android:id="@+id/counterCedarBark"
+        style="@style/ResourceCounter"
+        android:text="@{String.valueOf(ForgeFire.testBinding)}"
+        app:layout_constraintBottom_toTopOf="@+id/iv_cedarBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_cedarBark" />
+
+    <TextView
+        android:id="@+id/counterMahoganyBark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_mahoganyBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_mahoganyBark" />
+
+    <TextView
+        android:id="@+id/counterLarkBark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_larkBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_larkBark" />
+
+    <TextView
+        android:id="@+id/counterOakBark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_oakBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_oakBark" />
+
+    <TextView
+        android:id="@+id/counterPineBark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_pineBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pineBark" />
+
+    <TextView
+        android:id="@+id/counterBeechBark"
+        style="@style/ResourceCounter"
+        app:layout_constraintBottom_toTopOf="@+id/iv_beechBark"
+        app:layout_constraintEnd_toEndOf="@+id/iv_beechBark" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

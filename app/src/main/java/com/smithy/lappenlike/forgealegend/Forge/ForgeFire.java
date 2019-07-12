@@ -13,10 +13,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,8 +41,6 @@ public class ForgeFire extends Fragment {
 
     private View view;
     private ForgeContainer forgeContainer;
-
-    private FirebaseFirestore firestore;
 
     private Button btn_nextFragment;
 
@@ -73,12 +77,16 @@ public class ForgeFire extends Fragment {
     private TextView counterOak;
     private TextView counterBeech;
 
+    private TextView tv_fireEffectsWood;
+    private TextView tv_fireEffectsBark;
+
     private WoodInventory woodInventory;
 
     private Fire fire;
     private ImageView iv_fire;
 
-    private CollectionReference fireRef;
+    private DatabaseReference fireRef;
+    private DatabaseReference woodInventoryRef;
 
     @Nullable
     @Override
@@ -93,9 +101,9 @@ public class ForgeFire extends Fragment {
                ((ForgeContainer)getActivity()).setViewPager(1);
            }
        });
-       firestore = FirebaseFirestore.getInstance();
 
-       fireRef = firestore.collection("Users/"+userId+"/Fire");
+       fireRef = FirebaseDatabase.getInstance().getReference("users/"+userId+"/fire");
+       woodInventoryRef = FirebaseDatabase.getInstance().getReference("users/"+userId+"/woodInventory");
 
        tv_fireLifetime =view.findViewById(R.id.tv_fireLifetime);
        iv_fire = view.findViewById(R.id.iv_fire);
@@ -113,8 +121,12 @@ public class ForgeFire extends Fragment {
         iv_mahogany = view.findViewById(R.id.iv_mahogany);
         iv_beech = view.findViewById(R.id.iv_beech);
 
+
        tv_burnWood = view.findViewById(R.id.tv_burnWood);
        tv_burnBark = view.findViewById(R.id.tv_burnBark);
+
+        tv_fireEffectsWood = view.findViewById(R.id.tv_fireEffectsWood);
+        tv_fireEffectsBark = view.findViewById(R.id.tv_fireEffectsBark);
 
         counterCedarBark = view.findViewById(R.id.counterCedarBark);
         counterLarkBark = view.findViewById(R.id.counterLarkBark);
@@ -137,94 +149,111 @@ public class ForgeFire extends Fragment {
     }
 
    private void initFire(){
-       fireRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-           @Override
-           public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
-               fireRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                   @Override
-                   public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                       fire = queryDocumentSnapshots.toObjects(Fire.class).get(0);
-                       tv_fireLifetime.setText(String.valueOf(fire.getLifetime()));
-                       if(fire.getBark()!=0){
-                           switch (fire.getBark()){
-                               case 1:
-                                   tv_burnBark.setText(R.string.cedarBark);
-                                   break;
-                               case 2:
-                                   tv_burnBark.setText(R.string.larkBark);
-                                   break;
-                               case 3:
-                                   tv_burnBark.setText(R.string.pineBark);
-                                   break;
-                               case 4:
-                                   tv_burnBark.setText(R.string.mahoganyBark);
-                                   break;
-                               case 5:
-                                   tv_burnBark.setText(R.string.oakBark);
-                                   break;
-                               case 6:
-                                   tv_burnBark.setText(R.string.beechBark);
-                                   break;
-                           }
-                       }
+        fireRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                fire = dataSnapshot.getValue(Fire.class);
+                tv_fireLifetime.setText(String.valueOf(fire.getLifetime()));
+                if (fire.getBark() != 0) {
+                    switch (fire.getBark()) {
+                        case 1:
+                            tv_burnBark.setText(R.string.cedarBark);
+                            tv_fireEffectsBark.setText(R.string.burned_cedar_bark);
+                            break;
+                        case 2:
+                            tv_burnBark.setText(R.string.larkBark);
+                            tv_fireEffectsBark.setText(R.string.burned_lark_bark);
+                            break;
+                        case 3:
+                            tv_burnBark.setText(R.string.pineBark);
+                            tv_fireEffectsBark.setText(R.string.burned_pine_bark);
+                            break;
+                        case 4:
+                            tv_burnBark.setText(R.string.mahoganyBark);
+                            tv_fireEffectsBark.setText(R.string.burned_mahogany_bark);
+                            break;
+                        case 5:
+                            tv_burnBark.setText(R.string.oakBark);
+                            tv_fireEffectsBark.setText(R.string.burned_oak_bark);
+                            break;
+                        case 6:
+                            tv_burnBark.setText(R.string.beechBark);
+                            tv_fireEffectsBark.setText(R.string.burned_beech_bark);
+                            break;
+                    }
+                } else{
+                    tv_burnBark.setText("");
+                    tv_fireEffectsBark.setText("");
+                }
 
-                       if(fire.getWood()!=0){
-                           switch (fire.getBark()){
-                               case 1:
-                                   tv_burnWood.setText(R.string.cedar);
-                                   break;
-                               case 2:
-                                   tv_burnWood.setText(R.string.lark);
-                                   break;
-                               case 3:
-                                   tv_burnWood.setText(R.string.pine);
-                                   break;
-                               case 4:
-                                   tv_burnWood.setText(R.string.mahogany);
-                                   break;
-                               case 5:
-                                   tv_burnWood.setText(R.string.oak);
-                                   break;
-                               case 6:
-                                   tv_burnWood.setText(R.string.beech);
-                                   break;
-                           }
-                       }
+                if (fire.getBark() != 0) {
+                    switch (fire.getBark()) {
+                        case 1:
+                            tv_burnWood.setText(R.string.cedar);
+                            tv_fireEffectsWood.setText(R.string.burned_cedar);
+                            break;
+                        case 2:
+                            tv_burnWood.setText(R.string.lark);
+                            tv_fireEffectsWood.setText(R.string.burned_lark);
+                            break;
+                        case 3:
+                            tv_burnWood.setText(R.string.pine);
+                            tv_fireEffectsWood.setText(R.string.burned_pine);
+                            break;
+                        case 4:
+                            tv_burnWood.setText(R.string.mahogany);
+                            tv_fireEffectsWood.setText(R.string.burned_mahogany);
+                            break;
+                        case 5:
+                            tv_burnWood.setText(R.string.oak);
+                            tv_fireEffectsWood.setText(R.string.burned_oak);
+                            break;
+                        case 6:
+                            tv_burnWood.setText(R.string.beech);
+                            tv_fireEffectsWood.setText(R.string.burned_beech);
+                            break;
+                    }
+                } else{
+                    tv_burnWood.setText("");
+                    tv_fireEffectsWood.setText("");
+                }
 
-                       if(fire.getLifetime() == 0){
-                           iv_fire.setImageResource(R.drawable.fireout);
-                       } else{
-                           iv_fire.setImageResource(R.drawable.fire);
-                       }
-                   }
-               });
-           }
-       });
+                if (fire.getLifetime() == 0) {
+                    iv_fire.setImageResource(R.drawable.fireout);
+                } else {
+                    iv_fire.setImageResource(R.drawable.fire);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void initInventory(){
-        final CollectionReference woodRef = firestore.collection("Users/"+userId+"/WoodInventory");
-        woodRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        final DatabaseReference woodRef = FirebaseDatabase.getInstance().getReference("users/"+userId+"/woodInventory");
+        woodRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                woodRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        woodInventory = queryDocumentSnapshots.toObjects(WoodInventory.class).get(0);
-                        counterCedar.setText(String.valueOf(woodInventory.getCedar()));
-                        counterCedarBark.setText(String.valueOf(woodInventory.getCedarBark()));
-                        counterLark.setText(String.valueOf(woodInventory.getLark()));
-                        counterLarkBark.setText(String.valueOf(woodInventory.getLarkBark()) );
-                        counterPine.setText(String.valueOf(woodInventory.getPine()));
-                        counterPineBark.setText(String.valueOf(woodInventory.getPineBark()));
-                        counterMahogany.setText(String.valueOf(woodInventory.getMahogany()));
-                        counterMahoganyBark.setText(String.valueOf(woodInventory.getMahoganyBark()));
-                        counterOak.setText(String.valueOf(woodInventory.getOak()));
-                        counterOakBark.setText(String.valueOf(woodInventory.getOakBark()));
-                        counterBeech.setText(String.valueOf(woodInventory.getBeech()));
-                        counterBeechBark.setText(String.valueOf(woodInventory.getBeechBark()));
-                    }
-                });
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                woodInventory = dataSnapshot.getValue(WoodInventory.class);
+                counterCedar.setText(String.valueOf(woodInventory.getCedar()));
+                counterCedarBark.setText(String.valueOf(woodInventory.getCedarBark()));
+                counterLark.setText(String.valueOf(woodInventory.getLark()));
+                counterLarkBark.setText(String.valueOf(woodInventory.getLarkBark()) );
+                counterPine.setText(String.valueOf(woodInventory.getPine()));
+                counterPineBark.setText(String.valueOf(woodInventory.getPineBark()));
+                counterMahogany.setText(String.valueOf(woodInventory.getMahogany()));
+                counterMahoganyBark.setText(String.valueOf(woodInventory.getMahoganyBark()));
+                counterOak.setText(String.valueOf(woodInventory.getOak()));
+                counterOakBark.setText(String.valueOf(woodInventory.getOakBark()));
+                counterBeech.setText(String.valueOf(woodInventory.getBeech()));
+                counterBeechBark.setText(String.valueOf(woodInventory.getBeechBark()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -281,20 +310,50 @@ public class ForgeFire extends Fragment {
                         switch(view.getId()) {
 
                             //Bark
+                            case R.id.iv_water:
+                                if(fire.getLifetime() > 0){
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                                    builder.setTitle(R.string.confirm);
+                                    builder.setMessage(R.string.dial_extinguishFire);
+
+                                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            fire.setLifetime(0);
+                                            fire.setWood(0);
+                                            fire.setBark(0);
+                                            fireRef.setValue(fire);
+                                        }
+                                    });
+
+                                    builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                                    builder.show();
+                                } else{
+                                    Toast.makeText(getActivity(), R.string.fire_not_burning, Toast.LENGTH_SHORT).show();
+                                }
+                                break;
                             case R.id.iv_match:
                                 if(fire.getLifetime() == 0){
                                     if(fire.getWood() != 0){
                                         if(fire.getBark()!= 0){
                                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                                            builder.setTitle("Confirm");
+                                            builder.setTitle(R.string.confirm);
                                             builder.setMessage(R.string.dial_lightFire);
 
                                             builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     fire.setLifetime(3);
-                                                    fireRef.add(fire);
+                                                    fireRef.setValue(fire);
+                                                    woodInventoryRef.setValue(woodInventory);
                                                 }
                                             });
 
@@ -321,6 +380,7 @@ public class ForgeFire extends Fragment {
                                     if(Integer.parseInt(counterCedarBark.getText().toString())>0){
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.cedarBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_cedar_bark);
                                         fire.setBark(1);
                                         reduceCounter(counterCedarBark);
                                         woodInventory.setCedarBark(woodInventory.getCedarBark()-1);
@@ -336,6 +396,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterLarkBark.getText().toString()) > 0) {
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.larkBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_lark_bark);
                                         fire.setBark(2);
                                         reduceCounter(counterLarkBark);
                                         woodInventory.setLarkBark(woodInventory.getLarkBark() - 1);
@@ -351,6 +412,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterPineBark.getText().toString()) > 0) {
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.pineBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_pine_bark);
                                         fire.setBark(3);
                                         reduceCounter(counterPineBark);
                                         woodInventory.setPineBark(woodInventory.getPineBark() - 1);
@@ -366,6 +428,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterMahoganyBark.getText().toString()) > 0) {
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.mahoganyBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_mahogany_bark);
                                         fire.setBark(4);
                                         reduceCounter(counterMahoganyBark);
                                         woodInventory.setMahoganyBark(woodInventory.getMahoganyBark() - 1);
@@ -381,6 +444,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterOakBark.getText().toString()) > 0) {
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.oakBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_oak_bark);
                                         fire.setBark(5);
                                         reduceCounter(counterOakBark);
                                         woodInventory.setOakBark(woodInventory.getOakBark() - 1);
@@ -396,6 +460,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterBeechBark.getText().toString()) > 0) {
                                         giveBackResource(true);
                                         tv_burnBark.setText(R.string.beechBark);
+                                        tv_fireEffectsBark.setText(R.string.burned_beech_bark);
                                         fire.setBark(6);
                                         reduceCounter(counterBeechBark);
                                         woodInventory.setBeechBark(woodInventory.getBeechBark() - 1);
@@ -413,6 +478,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterCedar.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.cedar);
+                                        tv_fireEffectsWood.setText(R.string.burned_cedar);
                                         fire.setWood(1);
                                         reduceCounter(counterCedar);
                                         woodInventory.setCedar(woodInventory.getCedar() - 1);
@@ -428,6 +494,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterLark.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.lark);
+                                        tv_fireEffectsWood.setText(R.string.burned_lark);
                                         fire.setWood(2);
                                         reduceCounter(counterLark);
                                         woodInventory.setLark(woodInventory.getLark() - 1);
@@ -443,6 +510,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterPine.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.pine);
+                                        tv_fireEffectsWood.setText(R.string.burned_pine);
                                         fire.setWood(3);
                                         reduceCounter(counterPine);
                                         woodInventory.setPine(woodInventory.getPine() - 1);
@@ -458,6 +526,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterMahogany.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.mahogany);
+                                        tv_fireEffectsWood.setText(R.string.burned_mahogany);
                                         fire.setWood(4);
                                         reduceCounter(counterMahogany);
                                         woodInventory.setMahogany(woodInventory.getMahogany() - 1);
@@ -473,6 +542,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterOak.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.oak);
+                                        tv_fireEffectsWood.setText(R.string.burned_oak);
                                         fire.setWood(5);
                                         reduceCounter(counterOak);
                                         woodInventory.setOak(woodInventory.getOak() - 1);
@@ -488,6 +558,7 @@ public class ForgeFire extends Fragment {
                                     if (Integer.parseInt(counterBeech.getText().toString()) > 0) {
                                         giveBackResource(false);
                                         tv_burnWood.setText(R.string.beech);
+                                        tv_fireEffectsWood.setText(R.string.burned_beech);
                                         fire.setWood(6);
                                         reduceCounter(counterBeech);
                                         woodInventory.setBeech(woodInventory.getBeech() - 1);

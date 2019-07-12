@@ -44,7 +44,26 @@
     //Dialogs
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="confirm">Confirm</string>
     <string name="dial_lightFire">Are you sure you want to light the Fire?</string>
+    <string name="dial_extinguishFire">Are you sure you want to extinguish the Fire?</string>
+
+    //Values
+
+    <string name="burned_cedar">Physical Damage +5%, Elemental Damage +5%</string>
+    <string name="burned_lark">Elemental Damage +10%</string>
+    <string name="burned_pine">Physical Damage + 7%</string>
+
+    <string name="burned_mahogany">Physical Damage +10%, Elemental Damage -15%</string>
+    <string name="burned_oak">Elemental Damage +15%, Physical Damage -10%</string>
+    <string name="burned_beech">No Effect</string>
+
+    <string name="burned_cedar_bark">Wind Damage +20–35</string>
+    <string name="burned_lark_bark">Water Damage +20–35</string>
+    <string name="burned_pine_bark">Fire Damage +20–35</string>
+    <string name="burned_mahogany_bark">Physical Damage +10–20</string>
+    <string name="burned_oak_bark">Terror Damage +20–35</string>
+    <string name="burned_beech_bark">Electric Damage +10–60</string>
 
     //Errors
     <string name="registration_success">Registration successfull!</string>
@@ -55,6 +74,7 @@
     <string name="email_invalid">Not a valid E-Mail.</string>
     <string name="resource_missing">Required Resource is missing!</string>
     <string name="fire_burning">Your fire is still burning!</string>
+    <string name="fire_not_burning">Your fire is not burning!</string>
     <string name="no_wood">You did not choose any wood!</string>
     <string name="no_bark">You did not choose any bark!</string>
 

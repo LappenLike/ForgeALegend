@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,22 +20,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.smithy.lappenlike.forgealegend.Models.Fire;
+import com.smithy.lappenlike.forgealegend.Models.Weapon;
 import com.smithy.lappenlike.forgealegend.Models.WoodInventory;
 
 public class SetName extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser user;
-    private FirebaseFirestore firestore;
 
-    private DocumentReference userRef;
-
-    private DatabaseReference databaseRef;
+    public DatabaseReference databaseRef;
 
     private Button btn_submit;
     private EditText et_characterName;
@@ -63,9 +64,6 @@ public class SetName extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         databaseRef = FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
-        firestore = FirebaseFirestore.getInstance();
-
-        userRef = firestore.collection("Users").document(user.getUid());
 
         tv_faction_desc = findViewById(R.id.tv_faction_desc);
         tv_origin_desc = findViewById(R.id.tv_origin_desc);
@@ -204,8 +202,25 @@ public class SetName extends AppCompatActivity {
     }
 
     private void setAllDatabasePaths(){
-        userRef.collection("Fire").add(new Fire(0,0,0));
-        userRef.collection("WoodInventory").add(new WoodInventory(0,0,0,0,0,0,0,0,0,0,0,0));
+        databaseRef.runTransaction(new Transaction.Handler() {
+            @NonNull
+            @Override
+            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
+                databaseRef.child("idName").setValue(et_characterName.getText().toString().toUpperCase());
+                databaseRef.child("fire").setValue(new Fire(0,0,0));
+                databaseRef.child("woodInventory").setValue
+                        (new WoodInventory(0,0,0,0,0,0,0,0,0,0,
+                        0,0));
+                databaseRef.child("weapons").push().setValue(new Weapon("FirstWeapon","Sword",100));
+
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, boolean b, @Nullable DataSnapshot dataSnapshot) {
+
+            }
+        });
     }
 
 }

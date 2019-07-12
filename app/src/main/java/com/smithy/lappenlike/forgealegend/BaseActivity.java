@@ -46,10 +46,7 @@ public class BaseActivity extends AppCompatActivity {
     public static FirebaseUser user;
     public static String userId;
     public static DatabaseReference databaseRef;
-    public static FirebaseFirestore firestore;
-
-    public static String userid;
-    public static CollectionReference weaponRef;
+    public static DatabaseReference weaponRef;
 
     public static Map<String, Weapon> weapons = new ArrayMap<>();
 
@@ -70,10 +67,9 @@ public class BaseActivity extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         userId = user.getUid();
         databaseRef = FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
-        firestore = FirebaseFirestore.getInstance();
 
-        userid = user.getUid();
-        weaponRef = firestore.collection("Users").document(userid).collection("Weapons");
+        userId = user.getUid();
+        weaponRef = FirebaseDatabase.getInstance().getReference("users/"+userId+"/weapons");
 
         //logt den User aus wenn keine Verbindung zur Datenbank besteht (instant!)
         connectedRef.addValueEventListener(new ValueEventListener() {
@@ -117,19 +113,18 @@ public class BaseActivity extends AppCompatActivity {
 
     //holt die Waffen aus der Datenbank
     private void initWeaponListener(){
-        weaponRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        weaponRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                weaponRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
-                            for(DocumentSnapshot snapshot : snapshots){
-                                weapons.put(snapshot.getId(), snapshot.toObject(Weapon.class));
-                            }
-                            createInventoryTable();
-                        }
-                    });
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot  weapon : dataSnapshot.getChildren()){
+                    weapons.put(weapon.getKey(), weapon.getValue(Weapon.class));
+                }
+                createInventoryTable();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

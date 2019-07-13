@@ -119,6 +119,22 @@
     <string name="cc">cc</string>
 
     //Weapons
+    <string name="axe">Axe</string>
+    <string name="halberd">Halberd</string>
+    <string name="lance">Lance</string>
+    <string name="spear">Spear</string>
+    <string name="flail">Flail</string>
+    <string name="scythe">Scythe</string>
+    <string name="claymore">Claymore</string>
+    <string name="glaive">Glaive</string>
+    <string name="mace">Mace</string>
+    <string name="hammer">Hammer</string>
+    <string name="dagger">Dagger</string>
+    <string name="rapier">Rapier</string>
+
+    <string name="buckler">Buckler</string>
+    <string name="kite">Kite Shield</string>
+    <string name="scutum">Scutum</string>
 
     //System
     <string name="open">Open</string>

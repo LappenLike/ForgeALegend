@@ -21,6 +21,13 @@
         app:layout_constraintGuide_percent=".25" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/forVer75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".75" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/forHor50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +52,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".375" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/forHor625"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".625" />
 
     <ImageView
         android:id="@+id/iv_craftWeapon"
@@ -95,5 +108,118 @@
         app:layout_constraintEnd_toStartOf="@+id/forVer50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_weaponsLeft" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor125"
+        app:layout_constraintEnd_toStartOf="@+id/forVer75"
+        app:layout_constraintStart_toStartOf="@+id/forVer50"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor125"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/forVer75"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/forVer75"
+        app:layout_constraintTop_toTopOf="@+id/forHor125"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor25"
+        app:layout_constraintEnd_toStartOf="@+id/forVer75"
+        app:layout_constraintStart_toStartOf="@+id/forVer50"
+        app:layout_constraintTop_toTopOf="@+id/forHor125"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor375"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/forVer75"
+        app:layout_constraintTop_toTopOf="@+id/forHor25"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/forVer50"
+        app:layout_constraintTop_toTopOf="@+id/forHor375"
+        app:srcCompat="@drawable/metal" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/forHor375"
+        app:layout_constraintEnd_toStartOf="@+id/forVer75"
+        app:layout_constraintStart_toStartOf="@+id/forVer50"
+        app:layout_constraintTop_toTopOf="@+id/forHor25"
+        app:srcCompat="@drawable/metal" />
+
+    <TextView
+        android:id="@+id/tv_metal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/metal"
+        app:layout_constraintBottom_toTopOf="@+id/forHor625"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/forHor50" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

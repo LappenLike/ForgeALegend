@@ -29,6 +29,20 @@ public class ForgeWeapon extends Fragment {
     private ImageView iv_weaponsRight;
     private int imageIndex = 1;
 
+    private ImageView iv_SpringSteel;
+    private ImageView iv_highCarbonSteel;
+    private ImageView iv_toolSteel;
+    private ImageView iv_alloySteel;
+    private ImageView iv_duralumin;
+    private ImageView iv_nichrome;
+    private ImageView iv_bronze;
+
+    private ImageView iv_craftMetal1;
+    private ImageView iv_craftMetal2;
+    private ImageView iv_craftMetal3;
+    private ImageView iv_craftMetal4;
+    private int countSockets = 0;
+
     private Spinner sp_weapons;
 
     private Map<Integer, String> weaponsMap = new TreeMap<>();
@@ -44,6 +58,19 @@ public class ForgeWeapon extends Fragment {
         iv_weaponsRight = view.findViewById(R.id.iv_weaponsRight);
 
         sp_weapons = view.findViewById(R.id.sp_weapons);
+
+        iv_SpringSteel = view.findViewById(R.id.iv_springSteel);
+        iv_highCarbonSteel = view.findViewById(R.id.iv_highCarbonSteel);
+        iv_toolSteel = view.findViewById(R.id.iv_toolSteel);
+        iv_alloySteel = view.findViewById(R.id.iv_alloySteel);
+        iv_duralumin = view.findViewById(R.id.iv_duralumin);
+        iv_nichrome = view.findViewById(R.id.iv_nichrom);
+        iv_bronze = view.findViewById(R.id.iv_bronze);
+
+        iv_craftMetal1 = view.findViewById(R.id.iv_craftMetal1);
+        iv_craftMetal2 = view.findViewById(R.id.iv_craftMetal2);
+        iv_craftMetal3 = view.findViewById(R.id.iv_craftMetal3);
+        iv_craftMetal4 = view.findViewById(R.id.iv_craftMetal4);
 
         initSelection();
         return view;
@@ -74,6 +101,7 @@ public class ForgeWeapon extends Fragment {
         sp_weapons.setAdapter(spinnerAdapter);
 
         initClicks();
+        initMaterialViews();
         initSpinner();
     }
 
@@ -96,6 +124,87 @@ public class ForgeWeapon extends Fragment {
             }
         });
     }
+
+    public void initMaterialViews(){
+        switch (imageIndex){
+            case 1 :
+                countSockets = 2;
+                //replace stub
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 2:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 3:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 4:
+                countSockets = 2;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 5:
+                countSockets = 2;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 6:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 7:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 8:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 9:
+                countSockets = 2;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 10:
+                countSockets = 4;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 11:
+                countSockets = 2;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            case 12:
+                countSockets = 2;
+                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     private void initSpinner(){
         sp_weapons.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

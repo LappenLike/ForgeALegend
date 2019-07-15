@@ -129,9 +129,10 @@ public class ForgeWeapon extends Fragment {
         switch (imageIndex){
             case 1 :
                 countSockets = 2;
-                //replace stub
                 iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
                 iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 2:
                 countSockets = 4;
@@ -156,6 +157,8 @@ public class ForgeWeapon extends Fragment {
                 countSockets = 2;
                 iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
                 iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 6:
                 countSockets = 4;
@@ -182,6 +185,8 @@ public class ForgeWeapon extends Fragment {
                 countSockets = 2;
                 iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
                 iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 10:
                 countSockets = 4;
@@ -194,11 +199,15 @@ public class ForgeWeapon extends Fragment {
                 countSockets = 2;
                 iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
                 iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 12:
                 countSockets = 2;
                 iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
                 iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             default:
                 break;
@@ -271,6 +280,8 @@ public class ForgeWeapon extends Fragment {
             default:
                 break;
         }
+
+        initMaterialViews();
     }
 
     private void setImageIndex(int add){

@@ -1,6 +1,7 @@
 package com.smithy.lappenlike.forgealegend.Forge;
 
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.smithy.lappenlike.forgealegend.Keys;
 import com.smithy.lappenlike.forgealegend.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +75,7 @@ public class ForgeWeapon extends Fragment {
         iv_craftMetal4 = view.findViewById(R.id.iv_craftMetal4);
 
         initSelection();
+        initDragAndDrop();
         return view;
     }
 
@@ -105,6 +108,23 @@ public class ForgeWeapon extends Fragment {
         initSpinner();
     }
 
+    private void initDragAndDrop(){
+        final List<Integer> socketsx2 = Arrays.asList(1,4,5,9,11,12);
+        iv_craftMetal1.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent event) {
+                if(socketsx2.contains(imageIndex)){
+                    initDragCase(event.getAction(), 1);
+                }
+                return true;
+            }
+        });
+    }
+
+    private void initDragCase(int dragEvent, int metalPosition){
+
+    }
+
     private void initClicks(){
         iv_weaponsLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,86 +146,89 @@ public class ForgeWeapon extends Fragment {
     }
 
     public void initMaterialViews(){
+        //free, random -> beige, cyan, black, purple, turquoise, yellow, red, blue green
+
         switch (imageIndex){
             case 1 :
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
                 iv_craftMetal3.setImageResource(android.R.color.transparent);
                 iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 2:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(R.drawable.socketfree);
+                iv_craftMetal4.setImageResource(R.drawable.socketrandom);
                 break;
             case 3:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 4:
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(android.R.color.transparent);
+                iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 5:
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
                 iv_craftMetal3.setImageResource(android.R.color.transparent);
                 iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 6:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(R.drawable.socketfree);
+                iv_craftMetal4.setImageResource(R.drawable.socketwhite);
                 break;
             case 7:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal4.setImageResource(R.drawable.socketrandom);
                 break;
             case 8:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(R.drawable.socketfree);
+                iv_craftMetal4.setImageResource(R.drawable.socketrandom);
                 break;
             case 9:
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
                 iv_craftMetal3.setImageResource(android.R.color.transparent);
                 iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 10:
                 countSockets = 4;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal3.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal4.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketcyan);
+                iv_craftMetal2.setImageResource(R.drawable.socketrandom);
+                iv_craftMetal3.setImageResource(R.drawable.socketcyan);
+                iv_craftMetal4.setImageResource(R.drawable.socketrandom);
                 break;
             case 11:
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketfree);
                 iv_craftMetal3.setImageResource(android.R.color.transparent);
                 iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;
             case 12:
                 countSockets = 2;
-                iv_craftMetal1.setImageResource(R.drawable.weaponclaymore);
-                iv_craftMetal2.setImageResource(R.drawable.weaponclaymore);
+                iv_craftMetal1.setImageResource(R.drawable.socketfree);
+                iv_craftMetal2.setImageResource(R.drawable.socketgreen);
                 iv_craftMetal3.setImageResource(android.R.color.transparent);
                 iv_craftMetal4.setImageResource(android.R.color.transparent);
                 break;

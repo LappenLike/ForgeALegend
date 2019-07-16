@@ -8,7 +8,7 @@ public class StandardAxe {
    public static int damageMax = 40;
    public static double speed = 0.0;
    public static double crit = 10.0;
-
+//Nomal
    public static String getDamageDescription(){
        return damageMin+" - "+damageMin;
    }

@@ -1,5 +1,9 @@
 package com.smithy.lappenlike.forgealegend;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 public class Keys {
 
     public static final int CEDAR_BARK = 1;
@@ -33,5 +37,9 @@ public class Keys {
     public static final int BUCKLER = 13;
     public static final int KITESHIELD = 14;
     public static final int SCUTUM = 15;
+
+    public final static List<Integer> listOneHand = Arrays.asList(AXE, SPEAR, FLAIL, MACE, DAGGER, RAPIER);
+    public final static List<Integer> listTwoHand = Arrays.asList(HALBERD, SCYTHE, CLAYMORE, GLAIVE, HAMMER);
+    public final static List<Integer> listShields = Arrays.asList(BUCKLER, KITESHIELD, SCUTUM);
 
 }

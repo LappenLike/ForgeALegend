@@ -137,6 +137,9 @@
     <string name="kite">Kite Shield</string>
     <string name="scutum">Scutum</string>
 
+    <string name="h1">1h</string>
+    <string name="h2">2h</string>
+
     //System
     <string name="open">Open</string>
     <string name="close">Close</string>

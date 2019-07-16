@@ -61,8 +61,8 @@
 
     <ImageView
         android:id="@+id/iv_craftWeapon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -231,7 +231,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/forVer75"
-        app:layout_constraintTop_toTopOf="@+id/forHor625"
+        app:layout_constraintTop_toBottomOf="@+id/tv_metal"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
@@ -243,7 +243,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/forVer25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/forHor625"
+        app:layout_constraintTop_toBottomOf="@+id/tv_metal"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
@@ -255,7 +255,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/forVer75"
         app:layout_constraintStart_toStartOf="@+id/forVer50"
-        app:layout_constraintTop_toTopOf="@+id/forHor625"
+        app:layout_constraintTop_toBottomOf="@+id/tv_metal"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
@@ -267,8 +267,70 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/forVer50"
         app:layout_constraintStart_toStartOf="@+id/forVer25"
-        app:layout_constraintTop_toTopOf="@+id/forHor625"
+        app:layout_constraintTop_toBottomOf="@+id/tv_metal"
         app:srcCompat="@android:drawable/btn_dialog" />
+
+    <TextView
+        android:id="@+id/tv_descHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/tv_descWeight"
+        app:layout_constraintEnd_toStartOf="@+id/forVer25"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_descWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/tv_descDamage"
+        app:layout_constraintEnd_toStartOf="@+id/forVer25"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_descDamage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/forVer25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_craftMetal3" />
+
+    <TextView
+        android:id="@+id/tv_descSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/forVer25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descDamage" />
+
+    <TextView
+        android:id="@+id/tv_descCrit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/forVer25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descSpeed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
